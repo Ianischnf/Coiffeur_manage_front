@@ -1,0 +1,33 @@
+.navbar{
+   
+    height:100px;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar_left{
+    /* background-color: blue; */
+    height:100%;
+    width:50vh;
+    display: flex;
+    
+    align-items: center;
+}
+
+.navbar_right{
+    /* background-color: green; */
+    height:100%;
+    width:30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar_item{
+    margin-right:30px;
+    cursor: pointer;
+}
+.navbar_item:hover{
+    color : #B427F5;
+}

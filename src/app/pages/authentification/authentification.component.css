@@ -1,0 +1,38 @@
+.container_authentification{
+    height:100vh;
+    display: flex;
+}
+
+
+.container_left{
+    height:100vh;
+    width:50%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.container_form{
+    display: flex;
+    flex-direction: column;
+}
+.container_checkbox{
+    display: flex;
+}
+
+.container_right{
+    height:100vh;
+    width:50%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_style{
+    background-color: black;
+    width:80vh;
+    height:90vh;
+    border-radius:10px;
+}
