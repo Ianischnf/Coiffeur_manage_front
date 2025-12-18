@@ -1,0 +1,31 @@
+<div class="container_register">
+    <div class="container_left">
+        <div class="container_form">
+            <div class="container_input">
+                <label for="">Prénom</label>
+                <input type="text" [(ngModel)] = "form.firstName">
+            </div>
+            <div class="container_input">
+                <label for="">Nom</label>
+                <input type="text" [(ngModel)] = "form.lastName">
+            </div>
+            <div class="container_input">
+                <label for="">Numéro de téléphone</label>
+                <input type="text" [(ngModel)] = "form.phone">
+            </div>
+            <div class="container_input">
+                <label for="">Adresse email</label>
+                <input type="email" [(ngModel)] = "form.email">
+            </div>
+            <div class="container_input">
+                <label for="">Mot de passe</label>
+                <input type="password" [(ngModel)] = "form.password">
+            </div>
+
+            <button (click)="onRegister()">Je m'inscris</button>
+        </div>
+    </div>
+    <div class="container_right">
+        <app-block-login-register></app-block-login-register>
+    </div>
+</div>

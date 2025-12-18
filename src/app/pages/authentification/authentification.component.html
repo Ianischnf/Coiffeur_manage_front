@@ -1,18 +1,41 @@
 <div class="container_authentification">
     <div class="container_left">
         <div class="container_form">
-            <label for="">Email</label>
-            <input type="email">
+            <div class="container_input_email">
+                <label for="">Email</label>
+                <input type="email" [(ngModel)]="form.email">
+            </div>
 
-            <label for="">Password</label>
-            <input type="password">
+            <div class="container_input_password">
+                <label for="">Password</label>
+                <input type="password" [(ngModel)]="form.password">
+            </div>
             <div class="container_checkbox">
                 <input type="checkbox">
                 <p>Se rappeller de moi</p>
             </div>
+
+            <button (click)="onLogin()">Se connecter</button>
+
+            <div class="container_paragraphe">
+                <p class="no_compte paragraphe">Pas encore de compte ?<a routerLink="/register"> Inscrivez-vous ici</a></p>
+                <a href="#" class="paragraphe">Mot de passe oublié</a>   
+            </div>
+
+            <div class="container_social">
+                <div class="social_item">
+                    <img src="/assets/Insta.svg" alt="">
+                </div>
+                <div class="social_item">
+                    <img src="/assets/x.svg" alt="">
+                </div>
+                <div class="social_item">
+                    <img src="/assets/facebook.svg" alt="">
+                </div>
+            </div>
         </div>
     </div>
     <div class="container_right">
-        <div class="container_style"></div>
+        <app-block-login-register></app-block-login-register>
     </div>
 </div>

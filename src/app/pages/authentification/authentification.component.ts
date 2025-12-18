@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService, LoginRequest } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-authentification',
@@ -7,4 +10,25 @@ import { Component } from '@angular/core';
 })
 export class AuthentificationComponent {
 
+    form: LoginRequest = {
+      email: '',
+      password: ''
+    }
+
+    constructor(private authService : AuthService,
+                private router : Router
+    ) {}
+
+    onLogin(){
+      this.authService.login(this.form).subscribe({
+        next: (res) => {
+          console.log("Utilsateur connecté", res);
+          this.router.navigate(["/home"])
+        },
+
+        error:(err) => {
+          console.log("Erreur lors de la connexion",err);
+        }
+      })
+    }
 }

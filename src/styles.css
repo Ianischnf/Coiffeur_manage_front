@@ -1,6 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'Junction-light';
+  src: url('/assets/fonts/Junction-light.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *{
     margin:0;
     padding:0;
-    
+    font-family: 'Junction-light', sans-serif;
 }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
