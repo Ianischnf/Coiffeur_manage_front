@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppointmentRequest, AppointmentService } from 'src/app/services/appointment.service';
 
 @Component({
   selector: 'app-service',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./service.component.css']
 })
 export class ServiceComponent {
+
+
+
 
 }
