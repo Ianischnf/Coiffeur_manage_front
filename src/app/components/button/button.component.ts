@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent {
-  @Input() label    = 'Button';
-  @Input() type     : 'button' | 'submit' = 'button';
+  @Input() label = 'Button';
+  @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled = false;
-  @Input() variant: 'primary' | 'secondary' | 'danger' = 'primary';
+  @Input() variant: 'primary' | 'secondary' | 'danger' | 'delete' = 'primary';
 
 }
