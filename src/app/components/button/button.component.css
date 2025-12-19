@@ -1,0 +1,9 @@
+.action {
+  background-color: black;
+  color: white;
+  border:none;
+  border-radius: 5px;
+  height:30px;
+  padding:10px;
+  cursor: pointer;
+}
