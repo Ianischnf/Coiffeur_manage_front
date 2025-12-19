@@ -1,9 +1,19 @@
-.action {
+.primary {
   background-color: black;
   color: white;
   border:none;
   border-radius: 5px;
   height:30px;
   padding:10px;
+  cursor: pointer;
+}
+
+.secondary {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding:10px;
+  border-radius: 8px 0 8px 0;
+  width:100px;
   cursor: pointer;
 }

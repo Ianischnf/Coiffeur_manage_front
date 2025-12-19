@@ -9,4 +9,6 @@ export class ButtonComponent {
   @Input() label    = 'Button';
   @Input() type     : 'button' | 'submit' = 'button';
   @Input() disabled = false;
+  @Input() variant: 'primary' | 'secondary' | 'danger' = 'primary';
+
 }
