@@ -4,14 +4,16 @@ import { Observable } from "rxjs";
 
 export interface AppointmentRequest {
     startAt: string;
-    endAt: string;
+    durationMinutes: number,
+    hairdresser: string;
     note: string;
 }
 
 export interface Appointment {
-    id: number;
+    appointmentId: number;
     startAt: string;
     endAt: string;
+    hairdresser: string;
     note: string;
     status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
 }
@@ -25,11 +27,16 @@ export class AppointmentService {
     constructor(private http: HttpClient) { }
 
     createAppointment(data: AppointmentRequest): Observable<Appointment> {
-        return this.http.post<Appointment>(`${this.baseUrl}/appointment`, data);
+        return this.http.post<Appointment>(`${this.baseUrl}`, data);
     }
 
 
     fetchAllAppointment(): Observable<Appointment[]> {
-        return this.http.get<Appointment[]>(`${this.baseUrl}/appointment`);
+        return this.http.get<Appointment[]>(`${this.baseUrl}`);
     }
+
+    deleteAppointment(appointmentId : number){
+        return this.http.delete(`${this.baseUrl}/${appointmentId}`)
+    }
+
 }

@@ -1,31 +1,61 @@
-<cdk-accordion class="example-accordion">
-  <cdk-accordion-item
-    *ngFor="let item of items; let index = index; trackBy: trackByItem"
-    #accordionItem="cdkAccordionItem"
-    class="example-accordion-item"
-  >
-    <button
-      class="example-accordion-item-header"
-      (click)="accordionItem.toggle()"
-      tabindex="0"
-      [attr.id]="'accordion-header-' + index"
-      [attr.aria-expanded]="accordionItem.expanded"
-      [attr.aria-controls]="'accordion-body-' + index"
-    >
-      {{ item }}
-      <span class="example-accordion-item-description">
-       {{ accordionItem.expanded ? '↓' : '↑' }}
-      </span>
+<cdk-accordion class="example-accordion" [multi]="true">
+
+  <!-- PLANIFIER -->
+  <cdk-accordion-item #addItem="cdkAccordionItem" class="example-accordion-item">
+    <button class="example-accordion-item-header" (click)="addItem.toggle()">
+      📅 Planifier un rendez-vous
+      <span>{{ addItem.expanded ? '↓' : '↑' }}</span>
     </button>
 
-    <div
-      *ngIf="accordionItem.expanded"
-      class="example-accordion-item-body"
-      role="region"
-      [attr.id]="'accordion-body-' + index"
-      [attr.aria-labelledby]="'accordion-header-' + index"
-    >
-      Lorem ipsum...
+    <div *ngIf="addItem.expanded" class="example-accordion-item-body">
+      <form (ngSubmit)="onCreateAppointment()" #f="ngForm">
+        <label>Début</label>
+        <!-- <input type="datetime-local" name="startAt" [(ngModel)]="form.startAt" required /> -->
+        <app-date-picker (selectedDate)="form.startAt = $event ? $event.toISOString() : ''">
+        </app-date-picker>
+
+
+        <label>Coiffeurs</label>
+        <select name="durationMinutes">
+          <option *ngFor="let hairdresser of hairdressers">{{ hairdresser.FirstName}}</option>
+        </select>
+
+        <label>Note</label>
+        <textarea name="note" [(ngModel)]="form.note"></textarea>
+
+        <app-button label="Panifier le rendez-vous" type="submit" [disabled]="!!f.invalid"></app-button>
+        <!-- <button type="submit" class="action" [disabled]="f.invalid">Créer le rendez-vous</button> -->
+      </form>
     </div>
   </cdk-accordion-item>
+
+  <!-- ANNULER : UN SEUL ACCORDÉON -->
+  <cdk-accordion-item #cancelItem="cdkAccordionItem" class="example-accordion-item">
+    <button class="example-accordion-item-header" (click)="cancelItem.toggle()">
+      🗑️ Annuler un rendez-vous
+      <span>{{ cancelItem.expanded ? '↓' : '↑' }}</span>
+    </button>
+
+    <div *ngIf="cancelItem.expanded" class="example-accordion-item-body">
+
+      <div *ngIf="appointments.length === 0">
+        Aucun rendez-vous.
+      </div>
+
+      <div *ngFor="let rdv of appointments; trackBy: trackByRdv" class="rdv-row">
+        <div>
+          <p><b>Date du rendez-vous :</b> {{ rdv.startAt| date:'dd/MM/yyyy HH:mm' }}</p>
+          <p><b>Description :</b> {{ rdv.note }}</p>
+        </div>
+
+        <app-button label="Supprimer" type="submit" variant="delete"
+          (click)="onDeleteAppointment(rdv.appointmentId)"></app-button>
+
+        <hr />
+
+      </div>
+
+    </div>
+  </cdk-accordion-item>
+
 </cdk-accordion>

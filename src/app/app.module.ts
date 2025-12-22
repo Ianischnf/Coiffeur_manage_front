@@ -15,6 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { AccordionComponent } from './pages/service/components/accordion/accordion.component';
 import { ServiceComponent } from './pages/service/service.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { ButtonComponent } from './components/button/button.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { ServiceComponent } from './pages/service/service.component';
     RegisterComponent,
     BlockLoginRegisterComponent,
     AccordionComponent,
-    ServiceComponent
+    ServiceComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,10 +38,11 @@ import { ServiceComponent } from './pages/service/service.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    CdkAccordionModule
+    CdkAccordionModule,
+      DatePickerComponent
   
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
