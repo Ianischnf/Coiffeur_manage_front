@@ -19,6 +19,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ButtonComponent } from './components/button/button.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { SelectComponent } from './components/select/select.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { TextereaComponent } from './components/texterea/texterea.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +37,9 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     AccordionComponent,
     ServiceComponent,
     ButtonComponent,
+    SelectComponent,
+    TextereaComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,8 +48,11 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     FormsModule,
     BrowserAnimationsModule,
     CdkAccordionModule,
-      DatePickerComponent
-  
+    DatePickerComponent,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
+
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

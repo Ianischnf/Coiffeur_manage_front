@@ -11,20 +11,15 @@ export class AccordionComponent {
 
   form: AppointmentRequest = {
     startAt: '',
-    durationMinutes: 30,
-    hairdresser: '',
-    note: ''
+    note: '',
+    hairdresserId: null
   }
 
-  constructor(private appointmentService: AppointmentService,
-              private hairdresserService: hairdresserService) {}
+  constructor(private appointmentService: AppointmentService) {}
 
   ngOnInit(): void {
     this.onFetchAllAppointment();
-    this.onFetchHairDresser();
   }
-
-  hairdressers: HairDresserResponse[] = [];
   appointments: Appointment[] = [];
   items = ['Planifier un rendez-vous', 'Modifier un rendez-vous', 'Annuler un rendez-vous'];
   expandedIndex = 0;
@@ -34,6 +29,13 @@ export class AccordionComponent {
   }
 
   onCreateAppointment() {
+
+    console.log("FORM AVANT ENVOI", this.form);
+
+    if(this.form.hairdresserId == null) {
+      console.log("coiffeur vaux nul");
+      return
+    }
     this.appointmentService.createAppointment(this.form).subscribe({
       next: (res) => {
         console.log("Création du rdv réussi", res);
@@ -54,18 +56,6 @@ export class AccordionComponent {
         console.log("Erreur", err);
       }
     });
-  }
-
-  onFetchHairDresser() {
-    this.hairdresserService.fetchHairDresserList().subscribe({
-      next: (res) => {
-        this.hairdressers = res;
-       console.log(res);
-      },
-      error: (err) => {
-        console.log("Erreur", err);
-      }
-    })
   }
 
   onDeleteAppointment(appointmentId: number) {

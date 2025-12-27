@@ -9,19 +9,16 @@
 
     <div *ngIf="addItem.expanded" class="example-accordion-item-body">
       <form (ngSubmit)="onCreateAppointment()" #f="ngForm">
-        <label>Début</label>
         <!-- <input type="datetime-local" name="startAt" [(ngModel)]="form.startAt" required /> -->
         <app-date-picker (selectedDate)="form.startAt = $event ? $event.toISOString() : ''">
         </app-date-picker>
 
-
-        <label>Coiffeurs</label>
-        <select name="durationMinutes">
-          <option *ngFor="let hairdresser of hairdressers">{{ hairdresser.FirstName}}</option>
-        </select>
+        <app-select [hairdresserId]="form.hairdresserId" (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
 
         <label>Note</label>
-        <textarea name="note" [(ngModel)]="form.note"></textarea>
+        <app-texterea [value]="form.note" (valueChange)="form.note = $event">
+        </app-texterea>
+
 
         <app-button label="Panifier le rendez-vous" type="submit" [disabled]="!!f.invalid"></app-button>
         <!-- <button type="submit" class="action" [disabled]="f.invalid">Créer le rendez-vous</button> -->

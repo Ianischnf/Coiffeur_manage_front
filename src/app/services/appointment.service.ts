@@ -4,15 +4,14 @@ import { Observable } from "rxjs";
 
 export interface AppointmentRequest {
     startAt: string;
-    durationMinutes: number,
-    hairdresser: string;
     note: string;
+    hairdresserId: number | null;
 }
 
 export interface Appointment {
     appointmentId: number;
     startAt: string;
-    endAt: string;
+    hairdresserId: number;
     hairdresser: string;
     note: string;
     status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
