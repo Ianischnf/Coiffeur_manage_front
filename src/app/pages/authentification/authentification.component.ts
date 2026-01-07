@@ -10,6 +10,8 @@ import { AuthService, LoginRequest } from 'src/app/services/auth.service';
 })
 export class AuthentificationComponent {
 
+  loginType : 'CLIENT' | 'HAIRDRESSER' = 'CLIENT';
+
     form: LoginRequest = {
       email: '',
       password: ''
@@ -19,8 +21,8 @@ export class AuthentificationComponent {
                 private router : Router
     ) {}
 
-    onLogin(){
-      this.authService.login(this.form).subscribe({
+    onLoginClient(){
+      this.authService.loginClient(this.form).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.token);
           console.log("Utilsateur connecté", res);
@@ -31,5 +33,23 @@ export class AuthentificationComponent {
           console.log("Erreur lors de la connexion",err);
         }
       })
+    }
+
+    onLoginHairDresser(){
+      this.authService.loginHairDresser(this.form).subscribe({
+        next: (res) => {
+          localStorage.setItem('token', res.token);
+          console.log("Coiffeur connecté", res);
+          this.router.navigate(["/home"]);
+        }
+      })
+    }
+
+    onLogin(){
+      if(this.loginType === 'CLIENT') {
+        this.onLoginClient();
+      } else {
+        this.onLoginHairDresser();
+      }
     }
 }

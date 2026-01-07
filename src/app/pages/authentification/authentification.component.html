@@ -15,6 +15,11 @@
                 <p>Se rappeller de moi</p>
             </div>
 
+            <select [(ngModel)]="loginType">
+                <option value="CLIENT">Client</option>
+                <option value="HAIRDRESSER">Coiffeur</option>
+            </select>
+
             <button (click)="onLogin()">Se connecter</button>
 
             <div class="container_paragraphe">

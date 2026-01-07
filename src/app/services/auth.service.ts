@@ -31,10 +31,28 @@ export class AuthService {
         return this.http.post(`${this.baseUrl}/register`, data);
     }
 
-    //récupération du token
-    login(data: LoginRequest): Observable<LoginResponse> {
-        return this.http.post<LoginResponse>(`${this.baseUrl}/login`, data);
+    //récupération du token et connexion client
+    loginClient(data: LoginRequest): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(`${this.baseUrl}/client/login`, data);
     }
 
+    //récupération du token et connexion coiffeur
+    loginHairDresser(data: LoginRequest): Observable<LoginResponse> {
+        return this.http.post<LoginResponse>(`${this.baseUrl}/hairdresser/login`, data);
+    }
+
+    getRole(): 'CLIENT' | 'HAIRDRESSER' | null {
+        const token = localStorage.getItem('token');
+        if (!token) return null;
+
+        try{
+            /* créer un tableau de 3 éléménts, on prend le premier (payload), 
+                on décole la base 64 en JSON du JWT avec atob et si role existe pas -> null */
+            const payload = JSON.parse(atob(token.split('.')[1])); 
+            return payload.role ?? null;
+        } catch {
+            return null;
+        }
+    }
 
 }
