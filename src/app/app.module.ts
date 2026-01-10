@@ -14,7 +14,7 @@ import { Navigation } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { AccordionComponent } from './pages/service/components/accordion/accordion.component';
-import { ServiceComponent } from './pages/service/service.component';
+import { ServiceComponent } from './pages/service/service-client.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ButtonComponent } from './components/button/button.component';

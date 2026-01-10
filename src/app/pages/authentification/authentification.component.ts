@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService, LoginRequest } from 'src/app/services/auth.service';
+import { AuthService, LoginRequest } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-authentification',
@@ -24,7 +24,7 @@ export class AuthentificationComponent {
     onLoginClient(){
       this.authService.loginClient(this.form).subscribe({
         next: (res) => {
-          localStorage.setItem('token', res.token);
+          this.authService.setToken(res.token);
           console.log("Utilsateur connecté", res);
           this.router.navigate(["/home"])
         },
@@ -40,6 +40,7 @@ export class AuthentificationComponent {
         next: (res) => {
           localStorage.setItem('token', res.token);
           console.log("Coiffeur connecté", res);
+          console.log(this.authService.getRole());
           this.router.navigate(["/home"]);
         }
       })

@@ -3,10 +3,10 @@ import { AppointmentRequest, AppointmentService } from 'src/app/services/appoint
 
 @Component({
   selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.css']
+  templateUrl: './service-client.component.html',
+  styleUrls: ['./service-client.component.css']
 })
-export class ServiceComponent {
+export class ServiceClientComponent {
 
 
 

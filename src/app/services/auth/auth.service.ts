@@ -24,8 +24,24 @@ export interface LoginRequest {
 export class AuthService {
 
     private baseUrl = 'http://localhost:8083/auth';
+    private readonly TOKEN_KEY = 'token';
 
     constructor(private http: HttpClient) { }
+
+    
+    // enregistre le token 
+    setToken(token: string): void {
+        localStorage.setItem(this.TOKEN_KEY, token);
+    }
+
+    //lit le token
+    getToken(): string | null {
+        return localStorage.getItem(this.TOKEN_KEY);
+    }
+
+    isLoggedIn(): boolean {
+        return !!this.getToken();
+    }
 
     register(data: RegisterRequest): Observable<any> {
         return this.http.post(`${this.baseUrl}/register`, data);
@@ -42,17 +58,18 @@ export class AuthService {
     }
 
     getRole(): 'CLIENT' | 'HAIRDRESSER' | null {
-        const token = localStorage.getItem('token');
+        const token = this.getToken();
         if (!token) return null;
 
-        try{
+        try {
             /* créer un tableau de 3 éléménts, on prend le premier (payload), 
                 on décole la base 64 en JSON du JWT avec atob et si role existe pas -> null */
-            const payload = JSON.parse(atob(token.split('.')[1])); 
+            const payload = JSON.parse(atob(token.split('.')[1]));
             return payload.role ?? null;
         } catch {
             return null;
         }
     }
+
 
 }
