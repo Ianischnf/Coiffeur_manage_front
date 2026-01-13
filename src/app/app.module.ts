@@ -14,7 +14,7 @@ import { Navigation } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { AccordionComponent } from './pages/service/components/accordion/accordion.component';
-import { ServiceComponent } from './pages/service/service-client.component';
+import { ServiceClientComponent } from './pages/service/service-client/service-client.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ButtonComponent } from './components/button/button.component';
@@ -24,21 +24,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { TextereaComponent } from './components/texterea/texterea.component';
-
+import { ServiceHairdresserComponent } from './pages/service/service-hairdresser/service-hairdresser.component';
+import { AppointmentTableComponent } from './pages/service/components/appointment-table/appointment-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    ServiceHairdresserComponent,
     AuthentificationComponent,
     RegisterComponent,
     BlockLoginRegisterComponent,
     AccordionComponent,
-    ServiceComponent,
+    ServiceClientComponent,
     ButtonComponent,
     SelectComponent,
-    TextereaComponent
+    TextereaComponent,
+    AppointmentTableComponent
 
   ],
   imports: [
@@ -51,7 +55,8 @@ import { TextereaComponent } from './components/texterea/texterea.component';
     DatePickerComponent,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

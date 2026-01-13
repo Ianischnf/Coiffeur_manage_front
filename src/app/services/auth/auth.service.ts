@@ -40,7 +40,8 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return !!this.getToken();
+        const token = !!this.getToken();
+        return token;
     }
 
     register(data: RegisterRequest): Observable<any> {

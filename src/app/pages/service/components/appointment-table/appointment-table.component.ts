@@ -34,7 +34,7 @@ export class AppointmentTableComponent {
   constructor(private appointmentService : AppointmentService){}
 
   ngOnInit(): void {
-    this.onFetchAllAppointment();
+    this.fetchAllAppointmentHairdresser();
   }
 
   appointments : Appointment[] = [];
@@ -43,7 +43,7 @@ export class AppointmentTableComponent {
   dataSource = ELEMENT_DATA;
   clickedRows = new Set<PeriodicElement>();
 
-  onFetchAllAppointment(){
+  fetchAllAppointmentHairdresser(){
     this.appointmentService.fetchAllAppointment().subscribe({
       next: (res) => {
         this.appointments = res

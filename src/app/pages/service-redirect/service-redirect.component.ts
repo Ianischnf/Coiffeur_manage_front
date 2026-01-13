@@ -12,21 +12,24 @@ export class ServiceRedirectComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    
-    const role = this.auth.getRole();
+
+    const roleRaw = this.auth.getRole();
+    const role = (roleRaw ?? '').replace('ROLE_', '').toUpperCase();
     console.log('role : ', role);
 
-    if(role == 'HAIRDRESSER') {
+    if (role === 'HAIRDRESSER') {
+      console.log("redirect to hairdresser");
       this.router.navigate(['/hairdresser/appointments']);
       return;
-    } else if (role == 'CLIENT') {
-      this.router.navigate(['/client/booking'])
+    } else if (role === 'CLIENT') {
+      this.router.navigate(['/client/booking']);
       return;
     } else {
-      this.router.navigate(['/authentification'])
+      this.router.navigate(['/authentification']);
+      return;
     }
   }
 
