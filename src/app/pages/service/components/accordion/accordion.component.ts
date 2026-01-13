@@ -12,7 +12,8 @@ export class AccordionComponent {
   form: AppointmentRequest = {
     startAt: '',
     note: '',
-    hairdresserId: null
+    hairdresserId: null,
+    clientId: null
   }
 
   constructor(private appointmentService: AppointmentService) {}
