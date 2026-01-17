@@ -3,9 +3,9 @@
 
   <mat-select
     [value]="hairdresserId"
-    (selectionChange)="onSelect($event.value)"
+    (selectionChange)="onSelectionChange($event)"
   >
-    <mat-option *ngFor="let h of hairdressers" [value]="h.HairDresserId">
+    <mat-option *ngFor="let h of hairdressers" [value]="h.id">
       {{ h.FirstName }} {{ h.LastName }}
     </mat-option>
   </mat-select>

@@ -16,3 +16,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-overlay-container { 
+  position: fixed !important;
+  z-index: 100000 !important;
+}
+
+.cdk-overlay-pane {
+  z-index: 100000 !important;
+}

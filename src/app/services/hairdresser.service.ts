@@ -8,7 +8,7 @@ export interface HairDresserRequest{
 }
 
 export interface HairDresserResponse {
-    HairDresserId: number;
+    id: number;
     LastName: string;
     FirstName: string;
 }

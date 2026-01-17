@@ -13,6 +13,7 @@ export class AccordionComponent {
     startAt: '',
     note: '',
     hairdresserId: null,
+    
   }
 
   constructor(private appointmentService: AppointmentService) {}

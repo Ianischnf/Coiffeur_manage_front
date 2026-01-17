@@ -14,6 +14,8 @@
         </app-date-picker>
 
         <app-select [hairdresserId]="form.hairdresserId" (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
+        <p>hairdresserId parent: {{ form.hairdresserId }}</p>
+
 
         <label>Note</label>
         <app-texterea [value]="form.note" (valueChange)="form.note = $event">

@@ -11,30 +11,38 @@ export class SelectComponent {
   @Input() hairdresserId!: number | null;
   @Output() hairdresserIdChange = new EventEmitter<number>();
 
-  constructor(private hairdresserService: hairdresserService) {}
+  constructor(private hairdresserService: hairdresserService) { }
 
   ngOnInit(): void {
     this.onFetchHairDresser();
   }
 
-    hairdressers: HairDresserResponse[] = [];
+  hairdressers: HairDresserResponse[] = [];
 
-    onFetchHairDresser() {
+  onFetchHairDresser() {
     this.hairdresserService.fetchHairDresserList().subscribe({
       next: (res) => {
         console.log("ex 1 : ", res[0]);
         console.log("ID 1 : ", (res[0] as any).id);
+        console.log('keys res[0] =', Object.keys(res[0] as any));
+        console.log('res[0] =', res[0]);
         this.hairdressers = res;
-       console.log(res);
+        console.log(res);
       },
       error: (err) => {
         console.log("Erreur", err);
-      } 
+      }
     })
   }
 
   onSelect(hairdresserId: number) {
     console.log("id selectionné : ", hairdresserId);
     this.hairdresserIdChange.emit(Number(hairdresserId));
+  }
+
+  onSelectionChange(event: any) {
+    console.log('EVENT selectionchange : ', event);
+    console.log('VALUE:', event?.value);
+    this.onSelect(event?.value);
   }
 }

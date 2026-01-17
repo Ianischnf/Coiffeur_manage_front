@@ -45,7 +45,7 @@ export class AuthService {
     }
 
     register(data: RegisterRequest): Observable<any> {
-        return this.http.post(`${this.baseUrl}/register`, data);
+        return this.http.post(`${this.baseUrl}/client/register`, data);
     }
 
     //récupération du token et connexion client
