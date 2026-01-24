@@ -42,7 +42,7 @@ export interface HairdresserSummary {
 export class AppointmentService {
 
     //URL pour gerer les RDV côté clients
-    private baseUrl = 'http://localhost:8083/appointment'
+    private baseUrl = 'http://localhost:8083/client/appointment'
 
     //URL pour gerer les RDV côté coiffeur
     private baseUrlHairdresserAppointment = 'http://localhost:8083/hairdresser'

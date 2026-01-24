@@ -28,7 +28,7 @@ export class AppointmentTableComponent implements OnInit {
 
   appointments : Appointment[] = [];
 
-  displayedColumns: string[] = ['client', 'description', 'status', "date"];
+  displayedColumns: string[] = ['client', 'description', 'status', "date", "action"];
   dataSource = ELEMENT_DATA;
   clickedRows = new Set<PeriodicElement>();
 
