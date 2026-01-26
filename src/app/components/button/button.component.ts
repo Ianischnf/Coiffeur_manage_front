@@ -9,6 +9,6 @@ export class ButtonComponent {
   @Input() label = 'Button';
   @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled = false;
-  @Input() variant: 'primary' | 'secondary' | 'danger' | 'delete' = 'primary';
+  @Input() variant: 'primary' | 'secondary' | 'danger' | 'accepteAppointment' | 'refuseAppointment' |'delete' = 'primary';
 
 }

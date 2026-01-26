@@ -2,12 +2,15 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
+
+//Interface envoie requete pour créer rdv
 export interface AppointmentRequest {
     startAt: string;
     note: string;
     hairdresserId: number | null;
 }
 
+//interface ajouté dans interface RDV (appointment) pour récupérer le nom+prenom du client qui a créer le rdv
 export interface ClientSummary {
     id: number;
     firstName: string;
@@ -20,6 +23,7 @@ export interface HairdresserSummary {
     lastName?: string;
 }
 
+//Réponse du RDV
 export interface Appointment {
     appointmentId: number;
     startAt: string;
@@ -29,6 +33,20 @@ export interface Appointment {
     status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
     client: ClientSummary;
 }
+
+
+// Interface pour que le coiffeur gère ses RDV : 
+
+// Requete > envoie 
+    export interface AppointmentRequestStatus {
+        appointmentId: number;
+    }
+
+    // Reponse (du status modifié)
+    export interface AppointmentReponseStatus {
+        appointmentId : number;
+        status : 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+    }
 
 
 export interface HairdresserSummary {
@@ -45,7 +63,7 @@ export class AppointmentService {
     private baseUrl = 'http://localhost:8083/client/appointment'
 
     //URL pour gerer les RDV côté coiffeur
-    private baseUrlHairdresserAppointment = 'http://localhost:8083/hairdresser'
+    private baseUrlHairdresserAppointment = 'http://localhost:8083/hairdresser/appointments'
 
     constructor(private http: HttpClient) { }
 
@@ -67,7 +85,11 @@ export class AppointmentService {
     ///////////////////GESTION COTER COIFFEUR ///////////////////
 
     fetchAllAppointmentHairdresser(): Observable<Appointment[]> {
-        return this.http.get<Appointment[]>(`${this.baseUrlHairdresserAppointment}/appointments`)
+        return this.http.get<Appointment[]>(`${this.baseUrlHairdresserAppointment}`)
+    }
+
+    AcceptAppointment(data : AppointmentRequestStatus): Observable<AppointmentReponseStatus> {
+        return this.http.patch<AppointmentReponseStatus>(`${this.baseUrlHairdresserAppointment}/{id}/accept`, data);
     }
 
 }

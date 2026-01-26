@@ -1,0 +1,10 @@
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* toute la hauteur de l'écran */
+}
+
+.container_service_hairdresser_component {
+    flex: 1;
+    padding: 20px 20px 0 20px;
+}

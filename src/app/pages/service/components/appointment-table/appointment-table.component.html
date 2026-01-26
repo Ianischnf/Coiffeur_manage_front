@@ -20,8 +20,22 @@
     <td mat-cell *matCellDef="let element">{{ element.startAt }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef>Action</th>
+  <ng-container matColumnDef="actions">
+    <th  class="actionsColumn" mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <app-button
+        class = "AppointmentStatusButton"
+        label="Accepter"
+        type="submit"
+        variant="accepteAppointment"
+      ></app-button>
+
+      <app-button
+        label="Refuser"
+        type="submit"
+        variant="refuseAppointment"
+      ></app-button>
+    </td>
   </ng-container>
 
 
