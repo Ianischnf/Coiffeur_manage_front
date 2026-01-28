@@ -26,7 +26,14 @@ export class AppointmentTableComponent implements OnInit {
     this.onfetchAllAppointmentHairdresser();
   }
 
-  appointments : Appointment[] = [];
+  // Source de vérité : la liste complète, jamais modifiée
+  allAppointments: Appointment[] = [];
+
+  // Liste affichée dans le mat-table (filtrée)
+  appointments: Appointment[] = [];
+
+  //Ce que l’utilisateur a coché 
+  selectedStatuses: string[] = [] // ex: ['PENDING', 'ACCEPTED']
 
   displayedColumns: string[] = ['client', 'description', 'status', "date", "actions"];
   dataSource = ELEMENT_DATA;
@@ -36,7 +43,8 @@ export class AppointmentTableComponent implements OnInit {
   onfetchAllAppointmentHairdresser(){
     this.appointmentService.fetchAllAppointmentHairdresser().subscribe({
       next: (res) => {
-        this.appointments = res
+        this.allAppointments  = res;
+        this.appointments     = res;
         console.log('RDV : ', this.appointments);
       },
       error: (err) => {
@@ -83,6 +91,32 @@ export class AppointmentTableComponent implements OnInit {
       default :
         return '';
     }
+  }
+
+  onStatusChange(status: string, event: Event) {
+    const checked = (event.target as HTMLInputElement).checked;
+
+    if(checked){
+      this.selectedStatuses.push(status);
+    } else {
+      this.selectedStatuses = this.selectedStatuses.filter(s => s !== status);
+    }
+
+    this.applyFilter();
+  }
+
+  //filtre le status
+    applyFilter(): void {
+    // Si aucune case cochée -> on affiche tout
+    if (this.selectedStatuses.length === 0) {
+      this.appointments = this.allAppointments;
+      return;
+    }
+
+    // Sinon, on garde uniquement ceux dont le status est dans selectedStatuses
+    this.appointments = this.allAppointments.filter(app =>
+      app.status !== null && this.selectedStatuses.includes(app.status)
+    );
   }
 
 }

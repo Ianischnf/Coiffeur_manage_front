@@ -1,19 +1,19 @@
 <div class="container_checkboxFilter">
   <div class="checkbox">
     <label for="">PENDING</label>
-    <input type="checkbox" class="PENDING">
+    <input type="checkbox" class="PENDING" (change)="onStatusChange('PENDING', $event)">
   </div>
 
 
   <div class="checkbox">
     <label for="">ACCEPTED</label>
-    <input type="checkbox" class="ACCEPTED">
+    <input type="checkbox" class="ACCEPTED" (change)="onStatusChange('ACCEPTED', $event)">
   </div>
 
 
   <div class="checkbox">
     <label for="">REFUSED</label>
-    <input type="checkbox" class="REFUSED">
+    <input type="checkbox" class="REFUSED" (change)="onStatusChange('PENDING', $event)">
   </div>
 
 </div>
