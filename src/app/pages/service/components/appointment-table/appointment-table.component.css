@@ -10,3 +10,37 @@
     padding-left:80px;
     width:300px;
 }
+
+.container_checkboxFilter{
+    display: flex;
+    gap: 20px;
+    margin-bottom:20px;
+    width: 100%;
+    height:30px;
+    justify-content: center;
+}
+
+label{
+    margin-right:10px;
+}
+
+.PENDING:checked{
+    accent-color: #C47F1F;
+}
+
+.ACCEPTED:checked{
+    accent-color: #6aa842;
+}
+
+.REFUSED:checked{
+    accent-color: #C41F1F;
+}
+.status-pending{
+    color:#C47F1F;
+}
+.status-accepted{
+    color:#008702;
+}
+.status-refused{
+    color:#870000
+}

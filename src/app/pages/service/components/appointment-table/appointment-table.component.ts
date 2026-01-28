@@ -32,6 +32,7 @@ export class AppointmentTableComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   clickedRows = new Set<PeriodicElement>();
 
+  //récupération des rdv
   onfetchAllAppointmentHairdresser(){
     this.appointmentService.fetchAllAppointmentHairdresser().subscribe({
       next: (res) => {
@@ -44,9 +45,10 @@ export class AppointmentTableComponent implements OnInit {
     })
   }
 
-  onAcceptAppointment(AppointmentId: number) {
+  //Accepté un rdv
+  onAcceptAppointment(appointmentId: number) {
 
-    this.appointmentService.AcceptAppointment(AppointmentId).subscribe({
+    this.appointmentService.AcceptAppointment(appointmentId).subscribe({
       next: (res) => {
         console.log('RDV accepté ', res);
       },
@@ -55,6 +57,32 @@ export class AppointmentTableComponent implements OnInit {
       }
     })
 
+  }
+
+  //Refuser un rdv
+  onRefuseAppointment(appointmentId: number){
+    this.appointmentService.RefuseAppointment(appointmentId).subscribe({
+      next: (res) => {
+        console.log('RDV refusé', res);
+      },
+      error: (err) => {
+        console.log("Erreur", err);
+      }
+    })
+  }
+
+  // Gestion classe CSS des status
+  getSatusClass(status: string | null) : string {
+    switch(status){
+      case 'PENDING':
+        return 'status-pending';
+      case 'ACCEPTED':
+        return 'status-accepted';
+      case 'REFUSED' :
+        return 'status-refused';
+      default :
+        return '';
+    }
   }
 
 }

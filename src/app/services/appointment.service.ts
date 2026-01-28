@@ -30,7 +30,7 @@ export interface Appointment {
     hairdresserId: number;
     hairdresser: string;
     note: string;
-    status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+    status: 'PENDING' | 'ACCEPTED' | 'REFUSED';
     client: ClientSummary;
 }
 
@@ -39,7 +39,7 @@ export interface Appointment {
 // Reponse (du status modifié)
 export interface AppointmentReponseStatus {
     appointmentId: number;
-    status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+    status: 'PENDING' | 'ACCEPTED' | 'REFUSED';
 }
 
 
@@ -89,5 +89,10 @@ export class AppointmentService {
         );
     }
 
+    RefuseAppointment(appointmentId: number): Observable<AppointmentReponseStatus> {
+        return this.http.patch<AppointmentReponseStatus>(`${this.baseUrlHairdresserAppointment}/${appointmentId}/reject`,
+            null
+        );
+    }
 
 }
