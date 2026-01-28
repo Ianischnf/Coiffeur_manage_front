@@ -36,17 +36,11 @@ export interface Appointment {
 
 
 // Interface pour que le coiffeur gère ses RDV : 
-
-// Requete > envoie 
-    export interface AppointmentRequestStatus {
-        appointmentId: number;
-    }
-
-    // Reponse (du status modifié)
-    export interface AppointmentReponseStatus {
-        appointmentId : number;
-        status : 'PENDING' | 'CONFIRMED' | 'CANCELLED';
-    }
+// Reponse (du status modifié)
+export interface AppointmentReponseStatus {
+    appointmentId: number;
+    status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
+}
 
 
 export interface HairdresserSummary {
@@ -59,7 +53,7 @@ export interface HairdresserSummary {
 @Injectable({ providedIn: "root" })
 export class AppointmentService {
 
-    //URL pour gerer les RDV côté clients
+    //URL pour gerer les RDV côté clients 
     private baseUrl = 'http://localhost:8083/client/appointment'
 
     //URL pour gerer les RDV côté coiffeur
@@ -88,8 +82,12 @@ export class AppointmentService {
         return this.http.get<Appointment[]>(`${this.baseUrlHairdresserAppointment}`)
     }
 
-    AcceptAppointment(data : AppointmentRequestStatus): Observable<AppointmentReponseStatus> {
-        return this.http.patch<AppointmentReponseStatus>(`${this.baseUrlHairdresserAppointment}/{id}/accept`, data);
+    AcceptAppointment(appointmentId: number): Observable<AppointmentReponseStatus> {
+        return this.http.patch<AppointmentReponseStatus>(
+            `${this.baseUrlHairdresserAppointment}/${appointmentId}/accept`,
+            null
+        );
     }
+
 
 }

@@ -26,13 +26,14 @@
       <app-button
         class = "AppointmentStatusButton"
         label="Accepter"
-        type="submit"
+        type="button"
         variant="accepteAppointment"
+        (click)="onAcceptAppointment(element.appointmentId)"
       ></app-button>
 
       <app-button
         label="Refuser"
-        type="submit"
+        type="button"
         variant="refuseAppointment"
       ></app-button>
     </td>

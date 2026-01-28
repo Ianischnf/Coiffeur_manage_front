@@ -44,4 +44,17 @@ export class AppointmentTableComponent implements OnInit {
     })
   }
 
+  onAcceptAppointment(AppointmentId: number) {
+
+    this.appointmentService.AcceptAppointment(AppointmentId).subscribe({
+      next: (res) => {
+        console.log('RDV accepté ', res);
+      },
+      error: (err) => {
+        console.log("Erreur", err);
+      }
+    })
+
+  }
+
 }
