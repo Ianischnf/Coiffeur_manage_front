@@ -1,4 +1,6 @@
 
+//model RDV global (interface Appointment utilisé par service client & coffeur)
+
 export type AppointmentStatus = 'PENDING' | 'ACCEPTED' | 'REFUSED';
 
 export interface ClientSummary {
