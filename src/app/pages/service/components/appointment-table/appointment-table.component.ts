@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
-import { Appointment, AppointmentService } from 'src/app/services/appointment.service';
+import { MatTableModule } from '@angular/material/table';
+
+import { Appointment } from 'src/app/core/models/appointment.model';
+import { HairdresserAppointmentService } from 
+  'src/app/features/hairdresser/appointments/hairdresser-appointments.service';
 
 export interface PeriodicElement {
   name: string;
@@ -20,7 +23,7 @@ let ELEMENT_DATA: PeriodicElement[] = [];
 
 export class AppointmentTableComponent implements OnInit {
 
-  constructor(private appointmentService : AppointmentService){}
+  constructor(private hairdresserAppointmentService : HairdresserAppointmentService){}
 
   ngOnInit(): void {
     this.onfetchAllAppointmentHairdresser();
@@ -41,7 +44,7 @@ export class AppointmentTableComponent implements OnInit {
 
   //récupération des rdv
   onfetchAllAppointmentHairdresser(){
-    this.appointmentService.fetchAllAppointmentHairdresser().subscribe({
+    this.hairdresserAppointmentService.fetchAllAppointmentHairdresser().subscribe({
       next: (res) => {
         this.allAppointments  = res;
         this.appointments     = res;
@@ -56,7 +59,7 @@ export class AppointmentTableComponent implements OnInit {
   //Accepté un rdv
   onAcceptAppointment(appointmentId: number) {
 
-    this.appointmentService.AcceptAppointment(appointmentId).subscribe({
+    this.hairdresserAppointmentService.acceptAppointment(appointmentId).subscribe({
       next: (res) => {
         console.log('RDV accepté ', res);
       },
@@ -69,7 +72,7 @@ export class AppointmentTableComponent implements OnInit {
 
   //Refuser un rdv
   onRefuseAppointment(appointmentId: number){
-    this.appointmentService.RefuseAppointment(appointmentId).subscribe({
+    this.hairdresserAppointmentService.refuseAppointment(appointmentId).subscribe({
       next: (res) => {
         console.log('RDV refusé', res);
       },

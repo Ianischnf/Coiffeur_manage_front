@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { Appointment, AppointmentRequest, AppointmentService } from 'src/app/services/appointment.service';
-import { HairDresserResponse, hairdresserService } from 'src/app/services/hairdresser.service';
+import { Component, OnInit } from '@angular/core';
+
+import { Appointment } from 'src/app/core/models/appointment.model';
+import { AppointmentRequest } from 'src/app/features/client/appointments/dtos/appointment-client.dto';
+import { ClientAppointmentService } from 'src/app/features/client/appointments/client-appointments.service';
 
 @Component({
   selector: 'app-accordion',
@@ -16,7 +18,7 @@ export class AccordionComponent {
     
   }
 
-  constructor(private appointmentService: AppointmentService) {}
+  constructor(private clientAppointmentService : ClientAppointmentService) {}
 
   ngOnInit(): void {
     this.onFetchAllAppointment();
@@ -37,7 +39,7 @@ export class AccordionComponent {
       console.log("coiffeur vaux nul");
       return
     }
-    this.appointmentService.createAppointment(this.form).subscribe({
+    this.clientAppointmentService.createAppointment(this.form).subscribe({
       next: (res) => {
         console.log("Création du rdv réussi", res);
       },
@@ -49,7 +51,7 @@ export class AccordionComponent {
   }
 
   onFetchAllAppointment() {
-    this.appointmentService.fetchAllAppointment().subscribe({
+    this.clientAppointmentService.fetchAllAppointment().subscribe({
       next: (res) => {
         this.appointments = res;
       },
@@ -60,7 +62,7 @@ export class AccordionComponent {
   }
 
   onDeleteAppointment(appointmentId: number) {
-    this.appointmentService.deleteAppointment(appointmentId).subscribe({
+    this.clientAppointmentService.deleteAppointment(appointmentId).subscribe({
       next: () => console.log("Rdv supprimé"),
       error: (err) => console.log("Erreur lors de la suppression du rdv", err),
     })
