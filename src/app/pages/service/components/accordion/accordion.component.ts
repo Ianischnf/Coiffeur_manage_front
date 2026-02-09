@@ -15,10 +15,10 @@ export class AccordionComponent {
     startAt: '',
     note: '',
     hairdresserId: null,
-    
+
   }
 
-  constructor(private clientAppointmentService : ClientAppointmentService) {}
+  constructor(private clientAppointmentService: ClientAppointmentService) { }
 
   ngOnInit(): void {
     this.onFetchAllAppointment();
@@ -32,23 +32,25 @@ export class AccordionComponent {
   }
 
   onCreateAppointment() {
-
-    console.log("FORM AVANT ENVOI", this.form);
-
-    if(this.form.hairdresserId == null) {
-      console.log("coiffeur vaux nul");
-      return
+    console.log("StartAt", this.form.startAt, " | JSON = ", JSON.stringify(this.form.startAt));
+    if (this.form.hairdresserId == null) return;
+    if (!this.form.startAt || this.form.startAt.trim() === '') {
+      return;
     }
-    this.clientAppointmentService.createAppointment(this.form).subscribe({
-      next: (res) => {
-        console.log("Création du rdv réussi", res);
-      },
 
-      error: (err) => {
-        console.log("Erreur lors del a création d'un rdv", err);
-      }
-    })
+
+    const payload: AppointmentRequest = {
+      startAt: this.form.startAt.trim(),
+      note: this.form.note,
+      hairdresserId: this.form.hairdresserId,
+    };
+
+    this.clientAppointmentService.createAppointment(payload).subscribe({
+      next: (res) => console.log("Création du rdv réussi", res),
+      error: (err) => console.log("Erreur lors de la création d'un rdv", err),
+    });
   }
+
 
   onFetchAllAppointment() {
     this.clientAppointmentService.fetchAllAppointment().subscribe({
