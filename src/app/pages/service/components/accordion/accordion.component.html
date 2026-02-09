@@ -10,10 +10,12 @@
     <div *ngIf="addItem.expanded" class="example-accordion-item-body">
       <form (ngSubmit)="onCreateAppointment()" #f="ngForm">
         <!-- <input type="datetime-local" name="startAt" [(ngModel)]="form.startAt" required /> -->
-        <app-date-picker (selectedDate)="form.startAt = $event ? $event.toISOString() : ''">
-        </app-date-picker>
+        <app-date-picker (selectedDate)="onDateSelected($event)"></app-date-picker>
+        <p>DEBUG startAt = {{ form.startAt }}</p>
 
-        <app-select [hairdresserId]="form.hairdresserId" (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
+
+        <app-select [hairdresserId]="form.hairdresserId"
+          (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
         <p>hairdresserId parent: {{ form.hairdresserId }}</p>
 
 

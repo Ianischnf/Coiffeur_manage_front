@@ -71,6 +71,28 @@ export class AccordionComponent {
   }
 
 
+  onDateSelected(event: any) {
+    console.log('selectedDate event =', event, 'type=', typeof event);
+
+    // cas où le datepicker renvoie déjà une string
+    if (typeof event === 'string') {
+      this.form.startAt = event;
+      console.log('startAt <- string', this.form.startAt);
+      return;
+    }
+
+    // cas où il renvoie un Date
+    if (event instanceof Date) {
+      this.form.startAt = event.toISOString();
+      console.log('startAt <- Date ISO', this.form.startAt);
+      return;
+    }
+
+    // cas null/undefined/autre
+    this.form.startAt = '';
+    console.log('startAt <- empty (event null/invalid)');
+  }
+
 }
 
 
