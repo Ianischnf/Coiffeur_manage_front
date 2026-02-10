@@ -46,6 +46,7 @@
       <div *ngFor="let rdv of appointments; trackBy: trackByRdv" class="rdv-row">
         <div>
           <p><b>Date du rendez-vous :</b> {{ rdv.startAt| date:'dd/MM/yyyy HH:mm' }}</p>
+
           <p><b>Description :</b> {{ rdv.note }}</p>
         </div>
 

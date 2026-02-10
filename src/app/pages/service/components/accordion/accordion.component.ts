@@ -56,6 +56,7 @@ export class AccordionComponent {
     this.clientAppointmentService.fetchAllAppointment().subscribe({
       next: (res) => {
         this.appointments = res;
+        console.log("OBJET RDV : ", res)
       },
       error: (err) => {
         console.log("Erreur", err);
