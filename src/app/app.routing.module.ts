@@ -8,6 +8,7 @@ import { roleGuard } from './services/auth/role.guard';
 import { authGuard } from './services/auth/auth.guard';
 import { ServiceRedirectComponent } from './pages/service-redirect/service-redirect.component';
 import { ServiceHairdresserComponent } from './pages/service/service-hairdresser/service-hairdresser.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'about', component: AboutComponent},
   {
     path: 'service',
     canActivate: [authGuard],
@@ -45,6 +47,7 @@ const routes: Routes = [
       }
     ]
   },
+
 
   { path: '**', redirectTo: 'authentification' }
 ];

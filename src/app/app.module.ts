@@ -28,6 +28,8 @@ import { ServiceHairdresserComponent } from './pages/service/service-hairdresser
 import { AppointmentTableComponent } from './pages/service/components/appointment-table/appointment-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { AlertComponent } from './components/alert/alert.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { AlertComponent } from './components/alert/alert.component';
     SelectComponent,
     TextereaComponent,
     AppointmentTableComponent,
-    AlertComponent
+    AlertComponent,
+    FooterComponent,
+    AboutComponent
 
   ],
   imports: [

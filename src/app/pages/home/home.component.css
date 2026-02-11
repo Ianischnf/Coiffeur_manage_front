@@ -1,8 +1,14 @@
-.container_home {
+.layout {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_home {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
 
 .container_picture_description {

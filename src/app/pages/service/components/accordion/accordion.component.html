@@ -11,12 +11,10 @@
       <form (ngSubmit)="onCreateAppointment()" #f="ngForm">
         <!-- <input type="datetime-local" name="startAt" [(ngModel)]="form.startAt" required /> -->
         <app-date-picker (selectedDate)="onDateSelected($event)"></app-date-picker>
-        <p>DEBUG startAt = {{ form.startAt }}</p>
 
 
         <app-select [hairdresserId]="form.hairdresserId"
           (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
-        <p>hairdresserId parent: {{ form.hairdresserId }}</p>
 
 
         <label>Note</label>

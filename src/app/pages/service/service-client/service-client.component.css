@@ -1,6 +1,14 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .container_services{
     height:100vh;
-    margin-left:220px;
+    padding: 0 30vh 0 30vh;
+    flex: 1;
+    
 }
 
 h1{

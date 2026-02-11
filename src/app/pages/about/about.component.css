@@ -1,0 +1,43 @@
+.layout {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_about {
+    flex : 1;
+    /* background-color: red; */
+    display: flex;
+}
+
+.container_about_left{
+    /* background-color: blue; */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding-top:3vh;
+}
+.container_about_left img{
+    height:80vh;
+    width: 80vh;
+    border-radius:5px;
+    margin-left: 210px;
+}
+
+
+
+.container_about_right{
+    width: 40%;
+    /* background-color: aquamarine; */
+    padding: 3vh 30vh 0 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+p{
+    margin-top: 10px;
+}
+ul li {
+    margin-left:20px;
+}
