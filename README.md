@@ -1,27 +1,137 @@
-# RdvFront
+# 💇‍♂️ Salon Manager - Application de gestion de rendez-vous
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+Application fullstack permettant la gestion des rendez-vous d’un salon de coiffure.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📌 Description
 
-## Code scaffolding
+Cette application permet :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- 📅 Planifier un rendez-vous
+- ❌ Supprimer un rendez-vous
+- 👨‍💼 Sélectionner un coiffeur
+- 🔐 Authentification sécurisée via JWT
+- 📝 Ajouter une note à un rendez-vous
 
-## Build
+Le projet est conçu avec une architecture Frontend / Backend séparée.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🛠️ Technologies utilisées
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 🎨 Frontend
+- Angular
+- Angular Material
+- TypeScript
+- RxJS
 
-## Running end-to-end tests
+### ⚙️ Backend
+- Java 17
+- Spring Boot
+- Spring Security
+- JWT
+- JPA / Hibernate
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 🗄️ Base de données
+- PostgresSQL
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🏗️ Architecture
+
+Frontend (Angular)  
+⬇  
+API REST sécurisée (Spring Boot)  
+⬇  
+Base de données PostresSQL  
+
+L’authentification est gérée via un token JWT stocké côté client.
+
+---
+
+## 🚀 Installation
+
+### 1️⃣ Cloner le projet
+
+### Backend
+
+```bash
+git clone https://github.com/Ianischnf/Coiffeur_Manage.git
+```
+
+### Frontend
+
+```bash
+git clone https://github.com/Ianischnf/Coiffeur_manage_front.git
+```
+---
+
+### 2️⃣ Lancer le backend
+
+```bash
+mvn spring-boot:run
+```
+
+Le serveur démarre sur :
+```
+http://localhost:8083
+```
+
+---
+
+### 3️⃣ Lancer le frontend
+
+```bash
+npm install
+ng serve
+```
+
+Application accessible sur :
+```
+http://localhost:4200
+```
+
+---
+
+## 🔐 Sécurité
+
+L’application utilise :
+
+- Authentification JWT
+- Filtre personnalisé Spring Security
+- Gestion des rôles utilisateurs
+
+Les endpoints sensibles sont protégés par token.
+
+---
+
+## 📷 Aperçu
+
+_Ajouter ici des captures d’écran de l’application_
+
+---
+
+## 🧠 Ce que j’ai appris
+
+- Mise en place d’une authentification JWT complète
+- Communication Frontend / Backend via API REST
+- Gestion des états et événements Angular
+- Sécurisation d’API avec Spring Security
+- Gestion des erreurs HTTP et CORS
+
+---
+
+## 🔮 Améliorations futures
+
+- Dashboard statistiques
+- Notifications
+- Déploiement Docker
+- Tests unitaires et d’intégration
+
+---
+
+## 👤 Auteur
+
+Développé par Ianis CHENNAF
+
