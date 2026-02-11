@@ -20,13 +20,18 @@ Le projet est conçu avec une architecture Frontend / Backend séparée.
 
 ## 🛠️ Technologies utilisées
 
-### 🎨 Frontend
+### 🎨 Frontend 
+![Angular](https://img.shields.io/badge/Angular-17-red)
+
+
 - Angular
 - Angular Material
 - TypeScript
 - RxJS
 
 ### ⚙️ Backend
+![Java](https://img.shields.io/badge/Java-17-orange?logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-brightgreen?logo=springboot&logoColor=white)
+
 - Java 17
 - Spring Boot
 - Spring Security
@@ -81,6 +86,7 @@ http://localhost:8083
 ---
 
 ### 3️⃣ Lancer le frontend
+
 
 ```bash
 npm install
