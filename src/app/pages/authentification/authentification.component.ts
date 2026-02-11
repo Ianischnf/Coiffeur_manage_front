@@ -38,7 +38,7 @@ export class AuthentificationComponent {
     onLoginHairDresser(){
       this.authService.loginHairDresser(this.form).subscribe({
         next: (res) => {
-          localStorage.setItem('token', res.token);
+          this.authService.setToken(res.token);
           console.log("Coiffeur connecté", res);
           console.log(this.authService.getRole());
           this.router.navigate(["/home"]);

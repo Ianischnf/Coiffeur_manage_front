@@ -9,7 +9,7 @@ export const roleGuard: CanActivateFn = (route) => {
     const router = inject(Router);
 
 
-    const allowedRoles = (route.data?.['roles'] ?? []) as string[];
+    const allowedRoles = (route.data?.['roles'] ?? []) as string[]; //role autorisé dans le routing
     const roleRaw = auth.getRole();
     const roleNormalized = (roleRaw ?? '').replace('ROLE_', '');
 
@@ -18,6 +18,8 @@ export const roleGuard: CanActivateFn = (route) => {
     console.log('[RoleGuard] roleRaw:', roleRaw);
     console.log('[RoleGuard] roleNormalized:', roleNormalized);
 
+
+    //Vérifie si allowedRole est un tableau pour évité les erreurs avec la fonction include
     if (!Array.isArray(allowedRoles) || allowedRoles.length === 0) {
         router.navigate(['/home']);
         return false;
