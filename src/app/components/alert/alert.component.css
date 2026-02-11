@@ -1,0 +1,9 @@
+.alert {
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+}
+
+.success { background: #2e7d32; }
+.error   { background: #c62828; }
+.delete  { background: #c62828}
