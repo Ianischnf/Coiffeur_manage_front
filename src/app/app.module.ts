@@ -27,6 +27,7 @@ import { TextereaComponent } from './components/texterea/texterea.component';
 import { ServiceHairdresserComponent } from './pages/service/service-hairdresser/service-hairdresser.component';
 import { AppointmentTableComponent } from './pages/service/components/appointment-table/appointment-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatTableModule } from '@angular/material/table';
     ButtonComponent,
     SelectComponent,
     TextereaComponent,
-    AppointmentTableComponent
+    AppointmentTableComponent,
+    AlertComponent
 
   ],
   imports: [

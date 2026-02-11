@@ -62,3 +62,7 @@ input, select{
 .rdv-row{
   margin-top:10px;
 }
+
+.alert {
+  margin-top: 10px;
+}

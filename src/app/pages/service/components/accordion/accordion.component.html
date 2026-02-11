@@ -26,6 +26,11 @@
 
         <app-button label="Panifier le rendez-vous" type="submit" [disabled]="!!f.invalid"></app-button>
         <!-- <button type="submit" class="action" [disabled]="f.invalid">Créer le rendez-vous</button> -->
+        <app-alert
+          *ngIf = "createAppointmentAlert"
+          [type] = "createAppointmentAlert.type"
+          [message] = "createAppointmentAlert.message" class="alert">
+        </app-alert>
       </form>
     </div>
   </cdk-accordion-item>
@@ -56,6 +61,11 @@
         <hr />
 
       </div>
+        <app-alert
+          *ngIf = "deleteAppointmentAlert"
+          [type] = "deleteAppointmentAlert.type"
+          [message] = "deleteAppointmentAlert.message">
+        </app-alert>
 
     </div>
   </cdk-accordion-item>

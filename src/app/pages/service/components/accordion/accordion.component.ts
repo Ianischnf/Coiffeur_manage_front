@@ -4,6 +4,14 @@ import { Appointment } from 'src/app/core/models/appointment.model';
 import { AppointmentRequest } from 'src/app/features/client/appointments/dtos/appointment-client.dto';
 import { ClientAppointmentService } from 'src/app/features/client/appointments/client-appointments.service';
 
+
+type AlertType = 'success' | 'error' | 'delete'; //Union Type
+
+interface Alert {
+  type : AlertType;
+  message : string;
+}
+
 @Component({
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
@@ -23,9 +31,14 @@ export class AccordionComponent {
   ngOnInit(): void {
     this.onFetchAllAppointment();
   }
-  appointments: Appointment[] = [];
+
+  appointments: Appointment[] = []; //Contient les RDV qui ont été mis par le fetchAll
+
   items = ['Planifier un rendez-vous', 'Modifier un rendez-vous', 'Annuler un rendez-vous'];
   expandedIndex = 0;
+
+  createAppointmentAlert: Alert| null = null; //alerte personnaliser création/suppresion
+  deleteAppointmentAlert: Alert | null = null;
 
   trackByRdv(index: number, rdv: Appointment): number {
     return rdv.appointmentId;
@@ -35,6 +48,10 @@ export class AccordionComponent {
     console.log("StartAt", this.form.startAt, " | JSON = ", JSON.stringify(this.form.startAt));
     if (this.form.hairdresserId == null) return;
     if (!this.form.startAt || this.form.startAt.trim() === '') {
+      this.createAppointmentAlert = {
+        type: 'error',
+        message: 'La date est obligatoire'
+      }
       return;
     }
 
@@ -46,7 +63,13 @@ export class AccordionComponent {
     };
 
     this.clientAppointmentService.createAppointment(payload).subscribe({
-      next: (res) => console.log("Création du rdv réussi", res),
+      next: (res) => {
+        console.log("Création du rdv réussi", res),
+          this.createAppointmentAlert = {
+            type: 'success',
+            message: 'Rendez-vous créer avec succès.'
+          }
+      },
       error: (err) => console.log("Erreur lors de la création d'un rdv", err),
     });
   }
@@ -66,8 +89,17 @@ export class AccordionComponent {
 
   onDeleteAppointment(appointmentId: number) {
     this.clientAppointmentService.deleteAppointment(appointmentId).subscribe({
-      next: () => console.log("Rdv supprimé"),
-      error: (err) => console.log("Erreur lors de la suppression du rdv", err),
+      next: () => {
+        this.appointments = this.appointments.filter(app => app.appointmentId !== appointmentId);
+        this.deleteAppointmentAlert = {
+          type: 'delete',
+          message: 'Rendez-vous supprimer'
+        }
+      },
+      error: (err) => {
+        console.log("Erreur", err);
+      }
+
     })
   }
 
