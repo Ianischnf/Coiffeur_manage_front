@@ -100,6 +100,22 @@ http://localhost:4200
 
 ---
 
+## 🕵🏻‍♂️ Information
+
+Lien pour le swagger (documentation API) : 
+http://localhost:8083/swagger-ui/index.html#/hair-dresser-controller/addHairdresser
+
+### Comptes
+ coiffeur : 
+
+- email : john@gmail.com
+- mot de passe : 123456
+
+Client : 
+
+- email : ianischennaf@outlook.com
+- mot de passe : 123456
+
 ## 🔐 Sécurité
 
 L’application utilise :
@@ -128,8 +144,9 @@ _Ajouter ici des captures d’écran de l’application_
 
 ---
 
-## 🔮 Améliorations futures
+## 🔮 Améliorations & ajout futures
 
+- Ajout/suppression d'un coiffeur (seul un coiffeur avec un rôle admin pourra réalisé cette tâche).
 - Dashboard statistiques
 - Notifications
 - Déploiement Docker
