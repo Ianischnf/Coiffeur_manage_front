@@ -24,6 +24,8 @@
         console.log("redirect to hairdresser");
         this.router.navigate(['/hairdresser/appointments']);
         return;
+      } else if (role == 'ADMIN'){
+        this.router.navigate(['/admin/appointments']);
       } else if (role === 'CLIENT') {
         this.router.navigate(['/client/booking']);
         return;

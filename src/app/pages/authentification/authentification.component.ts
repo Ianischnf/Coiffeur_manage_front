@@ -10,47 +10,48 @@ import { AuthService, LoginRequest } from 'src/app/services/auth/auth.service';
 })
 export class AuthentificationComponent {
 
-  loginType : 'CLIENT' | 'HAIRDRESSER' = 'CLIENT';
+  loginType: 'CLIENT' | 'HAIRDRESSER' | 'ADMIN' = 'CLIENT';
 
-    form: LoginRequest = {
-      email: '',
-      password: ''
-    }
+  form: LoginRequest = {
+    email: '',
+    password: ''
+  }
 
-    constructor(private authService : AuthService,
-                private router : Router
-    ) {}
+  constructor(private authService: AuthService,
+    private router: Router
+  ) { }
 
-    onLoginClient(){
-      this.authService.loginClient(this.form).subscribe({
-        next: (res) => {
-          this.authService.setToken(res.token);
-          console.log("Utilsateur connecté", res);
-          this.router.navigate(["/home"])
-        },
+  onLoginClient() {
+    this.authService.loginClient(this.form).subscribe({
+      next: (res) => {
+        this.authService.setToken(res.token);
+        console.log("Utilsateur connecté", res);
+        this.router.navigate(["/home"])
+      },
 
-        error:(err) => {
-          console.log("Erreur lors de la connexion",err);
-        }
-      })
-    }
-
-    onLoginHairDresser(){
-      this.authService.loginHairDresser(this.form).subscribe({
-        next: (res) => {
-          this.authService.setToken(res.token);
-          console.log("Coiffeur connecté", res);
-          console.log(this.authService.getRole());
-          this.router.navigate(["/home"]);
-        }
-      })
-    }
-
-    onLogin(){
-      if(this.loginType === 'CLIENT') {
-        this.onLoginClient();
-      } else {
-        this.onLoginHairDresser();
+      error: (err) => {
+        console.log("Erreur lors de la connexion", err);
       }
+    })
+  }
+
+  onLoginHairDresser() {
+    this.authService.loginHairDresser(this.form).subscribe({
+      next: (res) => {
+        this.authService.setToken(res.token);
+        console.log("Coiffeur connecté", res);
+        console.log(this.authService.getRole());
+        this.router.navigate(["/home"]);
+      }
+    })
+  }
+
+  onLogin() {
+    if (this.loginType === 'HAIRDRESSER' || this.loginType === 'ADMIN') {
+      this.onLoginHairDresser();
+    } else {
+      this.onLoginClient();
     }
+  }
+
 }

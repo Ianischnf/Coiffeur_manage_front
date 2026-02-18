@@ -1,11 +1,47 @@
 <div class="navbar">
+
     <div class="navbar_left">
-        <div class="navbar_item" routerLink="/home">Acceuil</div>
-        <div class="navbar_item" routerLink="/service">Services</div>
-        <div class="navbar_item" routerLink="/about">A propos</div>
-        <div class="navbar_item" routerLink="/contact">Contact</div>
+        <div class="navbar_item" routerLink="/home">
+            Accueil
+        </div>
+
+        <div class="navbar_item" routerLink="/service">
+            Services
+        </div>
+
+        <div class="navbar_item" routerLink="/about">
+            A propos
+        </div>
+
+        <div class="navbar_item" routerLink="/contact">
+            Contact
+        </div>
+
+        <!-- CLIENT -->
+        <div *ngIf="isClient" 
+             class="navbar_item" 
+             routerLink="/client/booking">
+            Réserver
+        </div>
+
+        <!-- HAIRDRESSER -->
+        <div *ngIf="isHairdresser" 
+             class="navbar_item" 
+             routerLink="/hairdresser/appointments">
+            Mes rendez-vous
+        </div>
+
+        <!-- ADMIN -->
+        <div *ngIf="isAdmin" 
+             class="navbar_item" 
+             routerLink="#">
+            Admin
+        </div>
+
     </div>
+
     <div class="navbar_right">
         <img class="icon" src="/assets/img/icon.png" alt="">
     </div>
+
 </div>

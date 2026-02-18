@@ -47,6 +47,19 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'admin',
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'appointments',
+        component: ServiceHairdresserComponent,
+        canActivate: [roleGuard],
+        data: { roles: ['ADMIN'] },
+      }
+    ]
+  },
+
 
 
   { path: '**', redirectTo: 'authentification' }
