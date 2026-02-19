@@ -116,6 +116,12 @@ Client :
 - email : ianischennaf@outlook.com
 - mot de passe : 123456
 
+ADMIN :
+- email : admin@gmail.com
+- mot de passe : 123456
+
+Vous pouvez tester l'application en utilisant ces comptes ci-dessus.
+
 ## 🔐 Sécurité
 
 L’application utilise :
@@ -146,7 +152,8 @@ _Ajouter ici des captures d’écran de l’application_
 
 ## 🔮 Améliorations & ajout futures
 
-- Ajout/suppression d'un coiffeur (seul un coiffeur avec un rôle admin pourra réalisé cette tâche).
+- Modifier un rendez-vous
+- Contacter un coiffeur
 - Dashboard statistiques
 - Notifications
 - Déploiement Docker
