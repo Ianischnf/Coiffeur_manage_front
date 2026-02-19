@@ -6,15 +6,19 @@ import { Hairdresser } from "./dto/hairdresser.dto";
 @Injectable({ providedIn: 'root' })
 export class AdminService {
     
-    private baseUrl = 'http://localhost:8083/hairdresser';
+    // private baseUrl = 'http://localhost:8083/hairdresser';
 
-    constructor(private http: HttpClient) {}
+    // constructor(private http: HttpClient) {}
 
-    ngOnInit(): void {
-        this.fetchAllHairdresser();
-    }
+    // ngOnInit(): void {
+    //     this.fetchAllHairdresser();
+    // }
 
-    fetchAllHairdresser(): Observable<Hairdresser[]> {
-        return this.http.get<Hairdresser[]>(this.baseUrl);
-    } 
+    // fetchAllHairdresser(): Observable<Hairdresser[]> {
+    //     return this.http.get<Hairdresser[]>(this.baseUrl);
+    // } 
+
+    // createHairdresser(data: Hairdresser): Observable<Hairdresser> {
+    //     return this.http.post<Hairdresser>(this.baseUrl, data);
+    // }
 }

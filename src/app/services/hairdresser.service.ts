@@ -3,8 +3,10 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
 export interface HairDresserRequest{
-    lastName: string;
-    firstName: string;
+    FirstName: string;
+    LastName: string;
+    Email: string;
+    Password: string;
 }
 
 export interface HairDresserResponse {

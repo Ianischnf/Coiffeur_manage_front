@@ -1,0 +1,18 @@
+<div class="form">
+    <form (ngSubmit)="onCreateHairdresser()">
+        <label for="">Prénom</label>
+        <input type="text" name="LastName" id="" [(ngModel)]="form.FirstName">
+
+        <label for="">Nom</label>
+        <input type="text" name="FirstName" [(ngModel)]="form.LastName">
+
+        <label for="">Email</label>
+        <input type="email" name="Email" [(ngModel)]="form.Email">
+
+        <label for="">Mot de passe</label>
+        <input type="password" name="Password" id="" [(ngModel)]="form.Password">
+
+        <app-button class="button" label="Créer un coiffeur" type="submit"
+            variant="primary"></app-button>
+    </form>
+</div>

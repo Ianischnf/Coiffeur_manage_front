@@ -30,6 +30,9 @@ import { MatTableModule } from '@angular/material/table';
 import { AlertComponent } from './components/alert/alert.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './pages/about/about.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminFormComponent } from './pages/admin/component/admin-form/admin-form.component';
+import { AdminTableComponent } from './pages/admin/component/admin-table/admin-table.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { AboutComponent } from './pages/about/about.component';
     AppointmentTableComponent,
     AlertComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    AdminComponent,
+    AdminFormComponent,
+    AdminTableComponent
 
   ],
   imports: [
