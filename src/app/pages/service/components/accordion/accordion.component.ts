@@ -34,7 +34,7 @@ export class AccordionComponent {
 
   appointments: Appointment[] = []; //Contient les RDV qui ont été mis par le fetchAll
 
-  items = ['Planifier un rendez-vous', 'Modifier un rendez-vous', 'Annuler un rendez-vous'];
+  items = ['Planifier un rendez-vous', 'Modifier un rendez-vous', 'Annuler un rendez-vous', 'Informations sur les coiffeurs'];
   expandedIndex = 0;
 
   createAppointmentAlert: Alert| null = null; //alerte personnaliser création/suppresion

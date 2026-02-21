@@ -35,14 +35,16 @@ export class SelectComponent {
     })
   }
 
-  onSelect(hairdresserId: number) {
-    console.log("id selectionné : ", hairdresserId);
-    this.hairdresserIdChange.emit(Number(hairdresserId));
-  }
+    onSelect(event: any) {
+      console.log("id selectionné : ", this.hairdresserId);
+      this.hairdresserId = event?.value;
+      this.hairdresserIdChange.emit(Number(this.hairdresserId!));
+    }
 
-  onSelectionChange(event: any) {
-    console.log('EVENT selectionchange : ', event);
-    console.log('VALUE:', event?.value);
-    this.onSelect(event?.value);
-  }
+  // onSelectionChange(event: any) {
+  //   console.log('EVENT selectionchange : ', event);
+  //   console.log('VALUE:', event?.value);
+    
+  //   this.onSelect(event?.value);
+  // }
 }

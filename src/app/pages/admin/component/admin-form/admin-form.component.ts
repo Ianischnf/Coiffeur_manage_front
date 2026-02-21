@@ -13,8 +13,8 @@ export class AdminFormComponent {
     LastName: '',
     Email: '',
     Password: ''
-
   }
+  
   constructor(private hairdresserService: hairdresserService) { }
 
   onCreateHairdresser() {
