@@ -33,6 +33,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminFormComponent } from './pages/admin/component/admin-form/admin-form.component';
 import { AdminTableComponent } from './pages/admin/component/admin-table/admin-table.component';
+import { HairdresserProfilPageComponent } from './pages/service/components/hairdresser-profil-page/hairdresser-profil-page.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AdminTableComponent } from './pages/admin/component/admin-table/admin-t
     AboutComponent,
     AdminComponent,
     AdminFormComponent,
-    AdminTableComponent
+    AdminTableComponent,
+    HairdresserProfilPageComponent
 
   ],
   imports: [

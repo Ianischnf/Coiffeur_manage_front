@@ -16,6 +16,13 @@
         <app-select [hairdresserId]="form.hairdresserId"
           (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
 
+        
+        <app-hairdresser-profil-page 
+        *ngIf="form.hairdresserId !== null"
+        [hairDresserId]="form.hairdresserId"
+        
+        ></app-hairdresser-profil-page>
+
 
         <label>Note</label>
         <app-texterea [value]="form.note" (valueChange)="form.note = $event">
@@ -34,13 +41,13 @@
   </cdk-accordion-item>
 
   <!-- ANNULER : UN SEUL ACCORDÉON -->
-  <cdk-accordion-item #cancelItem="cdkAccordionItem" class="example-accordion-item">
-    <button class="example-accordion-item-header" (click)="cancelItem.toggle()">
+  <cdk-accordion-item #cancelItem1="cdkAccordionItem" class="example-accordion-item">
+    <button class="example-accordion-item-header" (click)="cancelItem1.toggle()">
       🗑️ Annuler un rendez-vous
-      <span>{{ cancelItem.expanded ? '↓' : '↑' }}</span>
+      <span>{{ cancelItem1.expanded ? '↓' : '↑' }}</span>
     </button>
 
-    <div *ngIf="cancelItem.expanded" class="example-accordion-item-body">
+    <div *ngIf="cancelItem1.expanded" class="example-accordion-item-body">
 
       <div *ngIf="appointments.length === 0">
         Aucun rendez-vous.
@@ -59,6 +66,42 @@
         <hr />
 
       </div>
+        <app-alert
+          *ngIf = "deleteAppointmentAlert"
+          [type] = "deleteAppointmentAlert.type"
+          [message] = "deleteAppointmentAlert.message">
+        </app-alert>
+
+    </div>
+  </cdk-accordion-item>
+
+   <!-- ANNULER : UN SEUL ACCORDÉON -->
+  <cdk-accordion-item #cancelItem2="cdkAccordionItem" class="example-accordion-item">
+    <button class="example-accordion-item-header" (click)="cancelItem2.toggle()">
+      🗑️ Information sur les coiffeurs
+      <span>{{ cancelItem2.expanded ? '↓' : '↑' }}</span>
+    </button>
+
+    <div *ngIf="cancelItem2.expanded" class="example-accordion-item-body">
+
+      <app-select [hairdresserId]="form.hairdresserId" (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
+      <div *ngIf="appointments.length === 0">
+        Aucun coiffeur séléctionné.
+      </div>
+
+      <!-- <div *ngFor="let rdv of appointments; trackBy: trackByRdv" class="rdv-row">
+        <div>
+          <p><b>Date du rendez-vous :</b> {{ rdv.startAt| date:'dd/MM/yyyy HH:mm' }}</p>
+
+          <p><b>Description :</b> {{ rdv.note }}</p>
+        </div>
+
+        <app-button label="Supprimer" type="submit" variant="delete"
+          (click)="onDeleteAppointment(rdv.appointmentId)"></app-button>
+
+        <hr />
+
+      </div> -->
         <app-alert
           *ngIf = "deleteAppointmentAlert"
           [type] = "deleteAppointmentAlert.type"

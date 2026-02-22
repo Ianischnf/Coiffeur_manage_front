@@ -16,6 +16,7 @@ export interface HairDresserResponse {
 }
 
 
+
 @Injectable({ providedIn : "root"})
 export class hairdresserService{
 
@@ -29,6 +30,10 @@ export class hairdresserService{
 
     fetchHairDresserList(): Observable<HairDresserResponse[]> {
         return this.http.get<HairDresserResponse[]>(`${this.baseUrl}`);
+    }
+
+    fetchHairDresserById(hairDresserId : number): Observable<HairDresserResponse> {
+        return this.http.get<HairDresserResponse>(`${this.baseUrl}/${hairDresserId}`);
     }
 
 }
