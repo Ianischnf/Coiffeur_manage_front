@@ -13,6 +13,7 @@ export interface HairDresserResponse {
     id: number;
     LastName: string;
     FirstName: string;
+    Email: string;
 }
 
 

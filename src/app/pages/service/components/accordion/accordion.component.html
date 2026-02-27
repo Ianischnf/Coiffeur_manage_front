@@ -16,13 +16,6 @@
         <app-select [hairdresserId]="form.hairdresserId"
           (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
 
-        
-        <app-hairdresser-profil-page 
-        *ngIf="form.hairdresserId !== null"
-        [hairDresserId]="form.hairdresserId"
-        
-        ></app-hairdresser-profil-page>
-
 
         <label>Note</label>
         <app-texterea [value]="form.note" (valueChange)="form.note = $event">
@@ -31,10 +24,8 @@
 
         <app-button label="Panifier le rendez-vous" type="submit" [disabled]="!!f.invalid"></app-button>
         <!-- <button type="submit" class="action" [disabled]="f.invalid">Créer le rendez-vous</button> -->
-        <app-alert
-          *ngIf = "createAppointmentAlert"
-          [type] = "createAppointmentAlert.type"
-          [message] = "createAppointmentAlert.message" class="alert">
+        <app-alert *ngIf="createAppointmentAlert" [type]="createAppointmentAlert.type"
+          [message]="createAppointmentAlert.message" class="alert">
         </app-alert>
       </form>
     </div>
@@ -66,16 +57,14 @@
         <hr />
 
       </div>
-        <app-alert
-          *ngIf = "deleteAppointmentAlert"
-          [type] = "deleteAppointmentAlert.type"
-          [message] = "deleteAppointmentAlert.message">
-        </app-alert>
+      <app-alert *ngIf="deleteAppointmentAlert" [type]="deleteAppointmentAlert.type"
+        [message]="deleteAppointmentAlert.message">
+      </app-alert>
 
     </div>
   </cdk-accordion-item>
 
-   <!-- ANNULER : UN SEUL ACCORDÉON -->
+  <!-- ANNULER : UN SEUL ACCORDÉON -->
   <cdk-accordion-item #cancelItem2="cdkAccordionItem" class="example-accordion-item">
     <button class="example-accordion-item-header" (click)="cancelItem2.toggle()">
       🗑️ Information sur les coiffeurs
@@ -85,9 +74,9 @@
     <div *ngIf="cancelItem2.expanded" class="example-accordion-item-body">
 
       <app-select [hairdresserId]="form.hairdresserId" (hairdresserIdChange)="form.hairdresserId = $event"></app-select>
-      <div *ngIf="appointments.length === 0">
-        Aucun coiffeur séléctionné.
-      </div>
+
+      <app-hairdresser-profil-page *ngIf="form.hairdresserId !== null"
+        [hairDresserId]="form.hairdresserId"></app-hairdresser-profil-page>
 
       <!-- <div *ngFor="let rdv of appointments; trackBy: trackByRdv" class="rdv-row">
         <div>
@@ -102,11 +91,9 @@
         <hr />
 
       </div> -->
-        <app-alert
-          *ngIf = "deleteAppointmentAlert"
-          [type] = "deleteAppointmentAlert.type"
-          [message] = "deleteAppointmentAlert.message">
-        </app-alert>
+      <app-alert *ngIf="deleteAppointmentAlert" [type]="deleteAppointmentAlert.type"
+        [message]="deleteAppointmentAlert.message">
+      </app-alert>
 
     </div>
   </cdk-accordion-item>
