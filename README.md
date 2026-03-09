@@ -105,22 +105,7 @@ http://localhost:4200
 Lien pour le swagger (documentation API) : 
 http://localhost:8083/swagger-ui/index.html#/hair-dresser-controller/addHairdresser
 
-### Comptes
- coiffeur : 
-
-- email : john@gmail.com
-- mot de passe : 123456
-
-Client : 
-
-- email : ianischennaf@outlook.com
-- mot de passe : 123456
-
-ADMIN :
-- email : admin@gmail.com
-- mot de passe : 123456
-
-Vous pouvez tester l'application en utilisant ces comptes ci-dessus.
+Des comptes pour tester l'applications serons créer lorsque celle-ci sera déployée.
 
 ## 🔐 Sécurité
 
